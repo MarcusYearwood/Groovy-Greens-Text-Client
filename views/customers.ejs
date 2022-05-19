@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="/images/favicon.png" sizes="48x48">
+  <link rel="stylesheet" href="https://use.typekit.net/ngq0haq.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>Customers</title>
+</head>
+
+<body>
+  <div class="back-container">
+    <div class="front-container">
+      <form class="my-5" action="/" method="post">
+        <div class="row">
+          <div class="col-sm-6">
+            <h1 class="header">Messenger Hub</h1>
+          </div>
+          <div class="col-sm-6 text-end">
+            <button type="submit" class="send-button ml-auto">Send Message</button>
+          </div>
+        </div>
+        <div class="message-container">
+          <hr class="head-hr">
+          <div class="row message-row">
+            <div class="col-sm-2">
+              <img src="/images/chat.png" class="message-icon" alt="email icon">
+            </div>
+            <div class="col-sm-10 text-start">
+              <textarea class="message-input text-light" name="message" rows="3">Hi {name}! Don't forget to order your Groovy Greens today! 🥬😋
+
+https://www.groovygreenspa.com/store
+
+Reply to (484) 666-3235</textarea>
+            </div>
+          </div>
+        </div>
+        <table class="table mx-auto">
+          <tbody>
+            <tr>
+              <td>#</td>
+              <td><strong>First</strong></td>
+              <td><strong>Last</strong></td>
+              <td><strong>Cell Number</strong></td>
+              <td><input type="checkbox" id="checkAll" name="select-checkboxes"></td>
+            </tr>
+            <% let row = 0 %>
+            <% for (i=0; i<data.length; i++ ) { %>
+            <% if (data[i]['Cell Number'] != undefined && data[i]['Cell Number'] != "") { %>
+            <% row += 1%>
+            <tr class=".toggled-row">
+              <td><strong><%= row %></strong></td>
+              <td><%= data[i][columns[0]] %></td>
+              <td><%= data[i][columns[1]] %></td>
+              <td><%= data[i][columns[2]] %></td>
+              <% if(data[i][columns[3]] === "TRUE") { %>
+              <td><input type="checkbox" class="message-toggle" name="number" value=<%= i %>  checked></td>
+              <% } else { %>
+              <td><input type="checkbox" class="message-toggle" name="number" value=<%= i %>  ></td>
+              <% } %>
+            </tr>
+            <% } %>
+            <% } %>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="/customers.js" charset="utf-8"></script>
+</body>
+
+</html>
